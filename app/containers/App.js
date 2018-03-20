@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import extend from 'xtend'
 
 import Back from '../components/Back'
-import Error from '../components/helpers/Error'
+import ErrorMessage from '../components/helpers/ErrorMessage'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -21,12 +21,6 @@ export default class App extends React.Component {
     })
   }
 
-  handleErrors(errors) {
-    this.setState({
-      errors: errors
-    })
-  }
-
   render() {
     var hasErrors = this.state.errors.length > 0
     var errorClass = classNames('flash', 'errors', {
@@ -34,18 +28,9 @@ export default class App extends React.Component {
     })
 
     var errors = hasErrors ? this.state.errors.map((error, i) => {
-      return <Error key={ i } header={ error.key } message={ error.message } />
+      return <ErrorMessage key={ i } header={ error.key } message={ error.message } />
     }) : null
 
-    const children = React.Children.map(this.props.children, parent => {
-      parent.props.children.map(child => {
-        let props = extend(child.props, {
-          handleErrors: this.handleErrors.bind(this)
-        })
-        return React.cloneElement(child, props)
-      })
-      return parent
-    })[0]
     return (
       <div>
         <div className={ errorClass }>
@@ -54,7 +39,7 @@ export default class App extends React.Component {
         <Back previous={ this.state.previous } />
         <div className="main">
           <div className="container">
-            { children }
+            { this.props.children }
           </div>
         </div>
       </div>

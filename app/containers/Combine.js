@@ -43,7 +43,6 @@ export default class Combine extends React.Component {
           <CombineForm
             setPieces={ this.setPieces.bind(this) }
             revealName={ this.revealName.bind(this) }
-            handleErrors={ this.props.handlErrors }
           />
         </div>
         { trueName }

@@ -1,21 +1,35 @@
 import React from 'react'
-import { isNumber, splitTrueName } from '../actions/truename'
+import classNames from 'classnames'
+
+import {
+  isNumber,
+  splitTrueName
+} from '../actions/truename'
+
 import Piece from '../components/Piece'
 import ShareForm from '../components/forms/ShareForm'
-import classNames from 'classnames'
+import ErrorMessage from '../components/helpers/ErrorMessage'
 
 export default class Share extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       pieces: [],
-      frozen: false
+      frozen: false,
+      errors: []
     }
-  } 
+  }
 
   showPieces(pieces) {
     this.setState({
+      errors: [],
       pieces: pieces
+    })
+  }
+
+  showErrors(errors) {
+    this.setState({
+      errors: errors
     })
   }
 
@@ -26,12 +40,25 @@ export default class Share extends React.Component {
     })
   }
 
+  handleClear(event) {
+    event.preventDefault()
+    this.setState({
+      pieces: []
+    })
+  }
+
   render() {
     var hasPieces = this.state.pieces.length > 0
+    var hasErrors = this.state.errors.length > 0
 
-    var pieces = this.state.pieces.map((piece, index) => {
-      return <Piece key={ index } content={ piece } />
-    })
+    var pieces = hasPieces ? this.state.pieces.map((piece, i) => {
+      return <Piece key={ i } content={ piece } />
+    }) : null
+
+    var errors = hasErrors ? this.state.errors.map((error, i) => {
+      return <ErrorMessage key={ i } header={ error.key } message={ error.message } />
+    }) : null
+
     var rowClass = classNames("row", {
       "bg-white": true,
       "bg-semi-transparent": true,
@@ -51,16 +78,20 @@ export default class Share extends React.Component {
         <div className={ rowClass }>
           <ShareForm
             showPieces={ this.showPieces.bind(this) }
+            showErrors={ this.showErrors.bind(this) }
             frozen={ this.state.frozen }
             handleFreeze={ this.handleFreeze.bind(this) }
-            handleErrors={ this.props.handlErrors }
+            handleClear={ this.handleClear.bind(this) }
           />
         </div>
         <div className={ rowClass }>
           <div className={ fullWidthClass }>
-            <div className={ piecesClass }>
-              { pieces }
-            </div>
+            { hasErrors
+              ? errors
+              : <div className={ piecesClass }>
+                { pieces }
+              </div>
+            }
           </div>
         </div>
       </div>

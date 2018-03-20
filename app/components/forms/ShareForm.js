@@ -13,14 +13,15 @@ import Form from '../helpers/Form'
 import Input from '../helpers/Input'
 import Button from '../helpers/Button'
 
+import ErrorMessage from '../helpers/ErrorMessage'
+
 export default class ShareForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       pieceQuantity: 1,
       quorum: 1,
-      trueName: '',
-      errors: []
+      trueName: ''
     }
   }
 
@@ -47,7 +48,7 @@ export default class ShareForm extends React.Component {
       var pieces = splitTrueName(state.trueName, state.pieceQuantity, state.quorum)
       this.props.showPieces(pieces)
     } else {
-      this.props.handleErrors(errors)
+      this.props.showErrors(errors)
     }
   }
 
@@ -108,6 +109,11 @@ export default class ShareForm extends React.Component {
             classNames={ btnClass }
             onClick={ this.props.handleFreeze }
             label="Freeze"
+          />
+          <Button
+            classNames={ btnClass }
+            onClick={ this.props.handleClear }
+            label="Clear"
           />
         </div>
       </Form>
