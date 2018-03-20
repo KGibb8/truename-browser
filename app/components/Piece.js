@@ -25,7 +25,6 @@ export default class Piece extends React.Component {
     var input = e.currentTarget.parentElement.previousElementSibling
     input.focus()
     input.select()
-    // This doesnt work?
     document.execCommand('copy')
     toolTip.innerHTML = 'Copied'
     setTimeout(() => {
@@ -59,7 +58,7 @@ export default class Piece extends React.Component {
               </div>
               <div className={ classNames("offset-by-one", "seven", "columns") }>
                 <strong>Piece: </strong>
-                <input className="spaced" style={ inputStyle } type="text" value={ this.props.content } disabled={ true } />
+                <input className="spaced" style={ inputStyle } type="text" value={ this.props.content } />
                 <div className="tooltip">
                   <a href="#" title="Copy" onClick={ this.copyToClipboard.bind(this) }>
                     <i className={ classNames("fa", "fa-copy", "fa-lg", "grey") }></i>
