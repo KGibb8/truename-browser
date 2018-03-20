@@ -1,3 +1,5 @@
+@import url('../../node_modules/font-awesome/css/font-awesome.min.css');
+
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -290,7 +292,7 @@ p {
 a {
   color: #FFFFFF; }
 a:hover {
-  color: #0FA0CE; }
+  color: #4A5158; }
 
 .button,
 button,
@@ -542,6 +544,10 @@ input[type='text'] {
   padding: 1em;
 }
 
+.doublepadded {
+  padding: 2em;
+}
+
 .relative {
   position: relative;
 }
@@ -592,6 +598,14 @@ input[type='text'] {
   background: #C0392B;
 }
 
+.bg-grey {
+  background: #4A5158;
+}
+
+.grey {
+  color: #4A5158;
+}
+
 .red {
   color: #C0392B;
 }
@@ -610,4 +624,70 @@ input[type='text'] {
 
 .pieces {
   overflow-wrap: break-word;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.05s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+i {
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  z-index: 1000;
+  visibility: visible;
+  opacity: 1;
 }

@@ -52,7 +52,7 @@ export default class Share extends React.Component {
     var hasErrors = this.state.errors.length > 0
 
     var pieces = hasPieces ? this.state.pieces.map((piece, i) => {
-      return <Piece key={ i } content={ piece } />
+      return <Piece key={ i } content={ piece } number={ i + 1 }/>
     }) : null
 
     var errors = hasErrors ? this.state.errors.map((error, i) => {
