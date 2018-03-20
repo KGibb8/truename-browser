@@ -7,7 +7,7 @@
   "repository": "kgibb8/truename",
   "scripts": {
     "build": "browserify -t [ babelify --presets [ react ] ] app/index.js -o build/app.js",
-    "export": "browserify -t [ babelify --presets [ react ] ] app/index.js | indexhtmlify --style assets/stylesheets/app.global.css --title 'True Name' > index.html",
+    "export": "browserify -t [ babelify --presets [ react ] ] app/index.js | indexhtmlify --style assets/stylesheets/app.global.css --title 'True Name' > ../truename-index/index.html",
     "open": "open index.html || xdg-open index.html",
     "start": "npm run build && npm run open"
   },
@@ -26,7 +26,5 @@
     "secrets.js": "^0.1.8",
     "xtend": "^4.0.1"
   },
-  "devDependencies": {
-    "font-awesome": "^4.7.0"
-  }
+  "devDependencies": {}
 }

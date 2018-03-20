@@ -105,11 +105,11 @@ export default class ShareForm extends React.Component {
         </div>
 
         <div className="three columns">
-          <a href="#" title="Freeze">
-            <i className={ classNames('fa', 'fa-stop', 'fa-lg', 'grey', 'padded') } onClick={ this.props.handleFreeze }></i>
+          <a href="#" title="Freeze" className="dedecorate" onClick={ this.props.handleFreeze } className="grey">
+            <i className="stop bg-grey"></i>
           </a>
-          <a href="#" title="Clear">
-            <i className={ classNames('fa', 'fa-step-backward', 'fa-lg', 'grey', 'padded') } onClick={ this.props.handleClear }></i>
+          <a href="#" title="Clear" className="dedecorate" onClick={ this.props.handleClear }>
+            <i className="arrow grey">&larr;</i>
           </a>
         </div>
       </Form>

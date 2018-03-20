@@ -86,12 +86,7 @@ export default class Share extends React.Component {
         </div>
         <div className={ rowClass }>
           <div className={ fullWidthClass }>
-            { hasErrors
-              ? errors
-              : <div className={ piecesClass }>
-                { pieces }
-              </div>
-            }
+            { hasErrors ? errors : pieces }
           </div>
         </div>
       </div>

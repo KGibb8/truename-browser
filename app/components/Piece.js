@@ -37,7 +37,6 @@ export default class Piece extends React.Component {
     var qrCode = <QRCode value={ this.props.content } size={ 384 } />
     var active = this.state.panelMaxHeight === null ? false : true
     var panelStyles = { maxHeight: this.state.panelMaxHeight }
-    var inputStyle = { width: '80%' }
     return (
       <div className={ rowClass }>
         <div className={ classNames('twelve', 'columns') }>
@@ -47,21 +46,21 @@ export default class Piece extends React.Component {
               <h4>{ this.props.number }</h4>
             </div>
             <div className={ classNames('two', 'columns') }>
-              <i className={ classNames('fa', 'fa-chevron-down', 'fa-lg', 'grey') }></i>
+              <i className={ classNames('arrow', 'grey') }>&darr;</i>
             </div>
           </div>
 
           <div className={ classNames("row", "panel", { active: active }) } style={ panelStyles }>
-            <div className="doublepadded">
+            <div className="triplepadded">
               <div className={ classNames("four", "columns") }>
                 { qrCode }
               </div>
               <div className={ classNames("offset-by-one", "seven", "columns") }>
                 <strong>Piece: </strong>
-                <input className="spaced" style={ inputStyle } type="text" value={ this.props.content } />
+                <input className="spaced" type="text" value={ this.props.content } readOnly />
                 <div className="tooltip">
-                  <a href="#" title="Copy" onClick={ this.copyToClipboard.bind(this) }>
-                    <i className={ classNames("fa", "fa-copy", "fa-lg", "grey") }></i>
+                  <a href="#" title="Copy" onClick={ this.copyToClipboard.bind(this) } className="dedecorate">
+                    <i className={ classNames('grey', 'bold') }>C</i>
                   </a>
                   <span className="tooltiptext" id="myTooltip">Copy to clipboard</span>
                 </div>

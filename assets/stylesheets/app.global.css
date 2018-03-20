@@ -523,8 +523,9 @@ hr {
   padding: 1em;
 }
 
-html {
-  overflow-y: scroll;
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -544,8 +545,8 @@ input[type='text'] {
   padding: 1em;
 }
 
-.doublepadded {
-  padding: 2em;
+.triplepadded {
+  padding: 3em;
 }
 
 .relative {
@@ -690,4 +691,19 @@ i {
   z-index: 1000;
   visibility: visible;
   opacity: 1;
+}
+
+.dedecorate {
+  text-decoration: none;
+}
+
+.arrow {
+  font-size: 3em;
+}
+
+.stop {
+  width: 20px;
+  height: 20px;
+  border-radius: 1px;
+  display: inline-block;
 }

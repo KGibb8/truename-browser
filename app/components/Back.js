@@ -10,8 +10,8 @@ export default class Back extends React.Component {
     var route = this.props.previous.slice(-1)[0] || { path: '/' }
     return (
       <div className='backBar'>
-        <Link to={ route.path } title="Back">
-          <i className="fa fa-arrow-left fa-lg"></i>
+        <Link to={ route.path } title="Back" className="dedecorate">
+          <i className="arrow">&larr;</i>
         </Link>
       </div>
     )
